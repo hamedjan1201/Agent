@@ -8,7 +8,7 @@ type Restaurant = {
   estimatedPrice: string;
   address: string;
   reason: string;
-  link: string;
+  link?: string;
   rating?: string;
 };
 
@@ -43,13 +43,16 @@ export default function Home() {
     <main className="min-h-screen bg-neutral-950 text-white px-6 py-12">
       <section className="max-w-4xl mx-auto">
         <div className="mb-10 text-center">
-          <p className="text-sm text-pink-300 mb-2">AI Concierge for San Francisco</p>
+          <p className="text-sm text-pink-300 mb-2">
+            AI Concierge for San Francisco
+          </p>
+
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             AI Date Night Finder
           </h1>
+
           <p className="text-neutral-300 max-w-2xl mx-auto">
-            Tell the agent your vibe, budget, and location. It returns 3 clear,
-            date-ready restaurant options with links and reasoning.
+            Describe your vibe and get 3 perfect restaurant options instantly.
           </p>
         </div>
 
@@ -59,7 +62,7 @@ export default function Home() {
               className="flex-1 bg-neutral-950 border border-neutral-700 rounded-xl px-4 py-3 outline-none focus:border-pink-400"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Example: romantic dinner under $100 in SF"
+              placeholder="romantic dinner under $100 in SF"
             />
 
             <button
@@ -73,7 +76,7 @@ export default function Home() {
 
           {loading && (
             <div className="mt-5 text-sm text-neutral-300">
-              Analyzing vibe, price, location, and date-night fit...
+              Finding the best options for you...
             </div>
           )}
         </div>
@@ -91,7 +94,9 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h2 className="text-2xl font-bold mb-2">{restaurant.name}</h2>
+                <h2 className="text-2xl font-bold mb-1">
+                  {restaurant.name}
+                </h2>
 
                 <p className="text-yellow-400 text-sm mb-2">
                   {restaurant.rating || "4.5⭐"}
@@ -113,19 +118,21 @@ export default function Home() {
                   </div>
 
                   <div>
-                    <p className="text-neutral-500">Why it works</p>
+                    <p className="text-neutral-500">Why it fits</p>
                     <p>{restaurant.reason}</p>
                   </div>
                 </div>
 
-                <a
-                  href={restaurant.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 block text-center bg-white text-black font-semibold py-2 rounded-xl hover:bg-neutral-200 transition"
-                >
-                  Open Link
-                </a>
+                {restaurant.link && (
+                  <a
+                    href={restaurant.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 block text-center bg-white text-black font-semibold py-2 rounded-xl hover:bg-neutral-200 transition"
+                  >
+                    Open Website
+                  </a>
+                )}
               </div>
             ))}
           </div>

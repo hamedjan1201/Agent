@@ -25,13 +25,13 @@ Returns:
 
 Not a search tool — a **decision engine**.
 
-Instead of browsing, you get clear, actionable choices.
+Instead of browsing, you get clear, actionable choices powered by real data.
 
 ---
 
 ## 🛠️ Tech
 
-Next.js • Qwen API • Tailwind • Zeabur
+Next.js • Qwen API • Bright Data • Tailwind • Zeabur
 
 ---
 
